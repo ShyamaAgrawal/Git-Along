@@ -9,3 +9,16 @@
     height: 120px;
     overflow: hidden;
 }
+@keyframes zoomAnimation{
+    0%{
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+.card:hover{
+    cursor: pointer;
+    box-shadow: 15px 13px 15px -16px black;
+    animation: zoomAnimation 0.5s ease-in-out forwards;
+}
