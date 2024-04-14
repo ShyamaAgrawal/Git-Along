@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
 import avatar from '.././Images/bg.png'
 // import Repositories from '../list.js'
 import './CSS/Repo.css'
@@ -76,6 +78,15 @@ function Repo() {
     const [sortBy, setSortBy] = useState('name');
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredRepo, setFilteredRepo] = useState([]);
+    const [userProfile, setUserProfile] = useState([]);
+    const para = useParams();
+    const userName = para.username;
+    console.log(userName)
+
+    useEffect(() => {
+        getRepoDetails();
+        getProfileDetails();
+    }, [])
 
     useEffect(() => {
         const filtered = repo.filter(rep => {
@@ -101,6 +112,27 @@ function Repo() {
         return 0;
     });
 
+    const getRepoDetails = async () => {
+        try {
+            const response = await axios.get(`https://api.github.com/users/${userName}/repos`);
+            const data = response.data
+            console.log(data)
+            setRepo(data)
+        } catch (error) {
+            console.error('Error in fetching Repo Details:', error);
+        }
+    };
+    const getProfileDetails = async () => {
+        try {
+            const response = await axios.get(`https://api.github.com/users/${userName}`);
+            const data = response.data
+            console.log(data)
+            setUserProfile(data)
+        } catch (error) {
+            console.error('Error in fetching UserProfile Details:', error);
+        }
+    };
+
     return (
         <>
             <div className='container'>
@@ -111,21 +143,22 @@ function Repo() {
                 </nav>
                 <section style={{ marginLeft: '10%', marginRight: '10%', height: '90vh' }}>
                     <div className="left">
-                        <img className='avatar' src={avatar} alt="" />
-                        <h1 style={{ color: 'beige' }}>Kashish Bansal</h1>
-                        <h3 style={{ lineHeight: 1.5 }}>Pre-final year | Computer Science and Engineering | GLA University</h3>
-                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        {userProfile.length == 0 ? <img className='avatar' src={avatar} alt="" /> :
+                            <img className='avatar' src={userProfile.avatar_url} alt="" />}
+                        <h1 style={{ color: 'beige' }}>{userProfile.name}</h1>
+                        <h3 style={{ lineHeight: 1.5 }}>{userProfile.bio}</h3>
+                        {userProfile.email && <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <img src={gmail} style={{ width: '20px', height: '20px', marginRight: '5px' }} alt="" />
-                            <h3>shyama.agrawal@gmail.com</h3>
-                        </div>
-                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                            <h3>{userProfile.email}</h3>
+                        </div>}
+                        {userProfile.location && <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <img src={location} style={{ width: '20px', height: '20px', marginRight: '5px' }} alt="" />
-                            <p>New Delhi</p>
-                        </div>
+                            <p>{userProfile.location}</p>
+                        </div>}
                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <img src={followers} style={{ width: '20px', height: '20px', marginRight: '5px' }} alt="" />
-                            <p style={{ marginRight: '10px', }}>100 followers</p>
-                            <p> * 50 following</p>
+                            <p style={{ marginRight: '10px', }}>{`${userProfile.followers} followers`}</p>
+                            <p>{` * ${userProfile.following} following`}</p>
                         </div>
 
 
@@ -160,8 +193,8 @@ function Repo() {
                                             <div className="content">
                                                 <div>
                                                     <span >{rep.name}</span>
-                                                    <p className='des'>{rep.desc}</p></div>
-                                                <div style={{ backgroundColor: '#10147d', padding: '8px 16px', borderRadius: '30px' }} className='home' ><a  style={{ color: 'white' }} href="">View</a></div>
+                                                    <p className='des'>{rep.description}</p></div>
+                                                <div style={{ backgroundColor: '#10147d', padding: '8px 16px', borderRadius: '30px' }} className='home' ><a style={{ color: 'white' }} href="">View</a></div>
                                             </div>
                                             <div className="meta">
                                                 <p><i className="ri-git-fork-line"></i>{rep.forks}</p>
