@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import axios from 'axios'
 import avatar from '.././Images/bg.png'
 // import Repositories from '../list.js'
@@ -81,7 +81,8 @@ function Repo() {
     const [userProfile, setUserProfile] = useState([]);
     const para = useParams();
     const userName = para.username;
-    console.log(userName)
+    const userID = para.id;
+    console.log(userID)
 
     useEffect(() => {
         getRepoDetails();
@@ -113,11 +114,23 @@ function Repo() {
     });
 
     const getRepoDetails = async () => {
+        let i = 1;
+        const repos = [];
+    
         try {
-            const response = await axios.get(`https://api.github.com/users/${userName}/repos`);
-            const data = response.data
-            console.log(data)
-            setRepo(data)
+            while (true) {
+                const response = await axios.get(`https://api.github.com/user/${userID}/repos?page=${i}`);
+                const data = response.data;
+    
+                if (!Array.isArray(data) || data.length === 0) {
+                    break;
+                }
+    
+                console.log(i + "-------" + response);
+                repos.push(...data);
+                i++;
+            }
+            setRepo(repos);
         } catch (error) {
             console.error('Error in fetching Repo Details:', error);
         }
@@ -137,8 +150,8 @@ function Repo() {
         <>
             <div className='container'>
                 <nav>
-                    <div style={{ marginLeft: '10%', color: '#10147d' }}><h1 className='logo' >UserName</h1></div>
-                    <div style={{ marginRight: '10%', backgroundColor: '#10147d', padding: '8px 16px', borderRadius: '10px', }} className='home'><a style={{ color: 'white' }} href="">HOME</a></div>
+                    <div style={{ marginLeft: '10%', color: '#10147d' }}><h1 className='logo' >{userProfile.login}</h1></div>
+                    <div style={{ marginRight: '10%', backgroundColor: '#10147d', padding: '8px 16px', borderRadius: '10px', }} className='home'><NavLink style={{ color: 'white' }} to="/">HOME</NavLink></div>
 
                 </nav>
                 <section style={{ marginLeft: '10%', marginRight: '10%', height: '90vh' }}>
