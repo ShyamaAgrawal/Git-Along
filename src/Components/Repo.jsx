@@ -35,7 +35,6 @@ function Repo() {
 
   return (
     <>
-      <>
             <div className='container'>
                 <nav>
                     <div className="leftn">
@@ -98,7 +97,6 @@ function Repo() {
                 </div>
                 </section>
             </div>
-        </>
       
     </>
   )
