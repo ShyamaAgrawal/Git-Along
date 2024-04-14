@@ -1,6 +1,6 @@
 // import React from 'react'
 // import dp from '../Images/github.png'
-import './Card.css'
+import './CSS/Card.css'
 
 const Card = ({username,dp}) => {
     return (
