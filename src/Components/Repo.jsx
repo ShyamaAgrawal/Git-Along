@@ -105,8 +105,8 @@ function Repo() {
             return a.name.localeCompare(b.name);
         } else if (sortBy === 'forks') {
             return b.forks - a.forks;
-        } else if (sortBy === 'star') {
-            return b.star - a.star;
+        } else if (sortBy === 'stargazers_count') {
+            return b.stargazers_count - a.stargazers_count;
         } else if (sortBy === 'open_issues') {
             return b.open_issues - a.open_issues;
         }
@@ -126,7 +126,8 @@ function Repo() {
                     break;
                 }
     
-                console.log(i + "-------" + response);
+                console.log(i + "-------" + response.data);
+                console.log(data)
                 repos.push(...data);
                 i++;
             }
@@ -139,7 +140,7 @@ function Repo() {
         try {
             const response = await axios.get(`https://api.github.com/users/${userName}`);
             const data = response.data
-            console.log(data)
+            console.log(response)
             setUserProfile(data)
         } catch (error) {
             console.error('Error in fetching UserProfile Details:', error);
@@ -211,7 +212,7 @@ function Repo() {
                                             </div>
                                             <div className="meta">
                                                 <p><i className="ri-git-fork-line"></i>{rep.forks}</p>
-                                                <p><i className="ri-star-line"></i>{rep.star}</p>
+                                                <p><i className="ri-star-line"></i>{rep.stargazers_count}</p>
                                                 <p>Open Issue: {rep.open_issues}</p>
                                             </div>
                                         </div>
