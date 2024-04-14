@@ -46,6 +46,7 @@ function Repo() {
                 </nav>
                 <section style={{ marginLeft: '10%', marginRight: '10%', height: '90vh' }}>
                     <div className="left">
+                        {/* user profile */}
                         <img className='avatar' src={avatar} alt="" />
                         <h1 style={{color:'beige'}}>Kashish Bansal</h1>
                         <h3 style={{ lineHeight: 1.5 }}>Pre-final year | Computer Science and Engineering | GLA University</h3>
