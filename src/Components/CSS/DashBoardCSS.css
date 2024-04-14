@@ -38,6 +38,7 @@
 }
 .search_btn:hover {
   cursor: pointer;
+  background-color:#1E24AC;
 }
 input:focus {
   outline: none;
