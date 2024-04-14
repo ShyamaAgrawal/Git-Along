@@ -9,6 +9,7 @@ import jayant from '../Images/jayant.jpg'
 import kashish from '../Images/Kashish.jpg'
 
 import { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
 const DashBoard = () => {
   const [users, setUsers] = useState([]);
@@ -58,7 +59,9 @@ const DashBoard = () => {
         </div>
         <div style={{ zIndex: 100 }} className='cards'>
           {users.map((user, index) => {
-            return <Card key={index} username={user.login} dp={user.avatar_url} />
+            return <NavLink to={`/repo-details/${user.login}`}>
+              <Card key={index} username={user.login} dp={user.avatar_url} />
+            </NavLink>
           })}
 
         </div>
@@ -71,31 +74,31 @@ const DashBoard = () => {
             <p>The GitHub Analytics Dashboard offers comprehensive insights into GitHub users and repositories. Users can effortlessly search for GitHub profiles and view a concise list of results. Upon selecting a user, a detailed repository table showcases vital information such as stars, forks, and open issues. Sorting and filtering options enhance user experience, enabling efficient navigation through repositories. Clicking on a repository reveals its commit activity graph for the past year, facilitating deeper analysis. Additionally, the dashboard lists contributors and their contributions, fostering community engagement. With a dedicated repository detail view featuring README files, recent commits, and open issues, users can gain comprehensive project insights. Smart rate limit handling ensures uninterrupted access to GitHub's API, guaranteeing a seamless user experience.</p>
           </div>
           <div style={{ width: '50%', display: "flex", flexDirection: 'row', justifyContent: 'center' }} >
-            <div style={{ marginRight: '20px',textAlign:'center' }}>
+            <div style={{ marginRight: '20px', textAlign: 'center' }}>
               <a href="https://www.linkedin.com/in/shyama-agrawal162/" target='_blank' >
                 <img src={shyama} className='owners' alt="" />
                 <h4 style={{ color: '#412C8C' }}>Shyama Agrawal</h4>
               </a>
             </div>
-            <div style={{ marginRight: '20px',textAlign:'center' }}>
+            <div style={{ marginRight: '20px', textAlign: 'center' }}>
               <a href="https://www.linkedin.com/in/kashish-bansal-108684243/" target='_blank' >
                 <img src={kashish} className='owners' alt="" />
                 <h4 style={{ color: '#412C8C' }}>Kashish Bansal</h4>
               </a>
             </div>
 
-            <div style={{textAlign:'center'}}>
+            <div style={{ textAlign: 'center' }}>
               <a href="https://www.linkedin.com/in/jayant-sharma-9544a4242/" target='_blank'>
                 <img src={jayant} className='owners' alt="" />
-                <h4 style={{ color:'#412C8C' }}>Jayant Sharma</h4>
+                <h4 style={{ color: '#412C8C' }}>Jayant Sharma</h4>
               </a>
             </div>
 
           </div>
         </div>
       </div>
-      <div style={{ backgroundColor:'rgb(244, 240, 240)',textAlign:'center',padding:'20px'}}>
-        <h4 style={{color:'gray'}}>Thanks for visiting!</h4>
+      <div style={{ backgroundColor: 'rgb(244, 240, 240)', textAlign: 'center', padding: '20px' }}>
+        <h4 style={{ color: 'gray' }}>Thanks for visiting!</h4>
       </div>
     </div>
   )

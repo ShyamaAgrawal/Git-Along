@@ -1,4 +1,4 @@
-import  { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import avatar from '.././Images/bg.png'
 import Repositories from "../../public/list.json"
 import './CSS/Repo.css'
@@ -40,15 +40,14 @@ function Repo() {
         <>
             <div className='container'>
                 <nav>
-                    <div style={{marginLeft: '10%',color:'#10147d'}}><h1 className='logo' >UserName</h1></div>
-                    <div style={{marginRight: '10%',backgroundColor:'#10147d',padding:'8px 16px',borderRadius: '10px',}} className='home'><a style={{color:'white'}} href="">HOME</a></div>
+                    <div style={{ marginLeft: '10%', color: '#10147d' }}><h1 className='logo' >UserName</h1></div>
+                    <div style={{ marginRight: '10%', backgroundColor: '#10147d', padding: '8px 16px', borderRadius: '10px', }} className='home'><a style={{ color: 'white' }} href="">HOME</a></div>
 
                 </nav>
                 <section style={{ marginLeft: '10%', marginRight: '10%', height: '90vh' }}>
                     <div className="left">
-                        {/* user profile */}
                         <img className='avatar' src={avatar} alt="" />
-                        <h1 style={{color:'beige'}}>Kashish Bansal</h1>
+                        <h1 style={{ color: 'beige' }}>Kashish Bansal</h1>
                         <h3 style={{ lineHeight: 1.5 }}>Pre-final year | Computer Science and Engineering | GLA University</h3>
                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <img src={gmail} style={{ width: '20px', height: '20px', marginRight: '5px' }} alt="" />
