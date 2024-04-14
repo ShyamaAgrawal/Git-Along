@@ -59,7 +59,7 @@ const DashBoard = () => {
         </div>
         <div style={{ zIndex: 100 }} className='cards'>
           {users.map((user, index) => {
-            return <NavLink to={`/repo-details/${user.login}`}>
+            return <NavLink key={index}  to={`/repo-details/${user.login}`}>
               <Card key={index} username={user.login} dp={user.avatar_url} />
             </NavLink>
           })}
