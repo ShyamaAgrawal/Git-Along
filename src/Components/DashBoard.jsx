@@ -48,7 +48,7 @@ const DashBoard = () => {
         <img src={bg} alt="" style={{ position: 'absolute', zIndex: 1, alignContent: 'center' }} />
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100, marginTop: '15%' }}>
-          <h1 className='title'>Git Along</h1>
+          <h1 className='title'>Git-Along</h1>
         </div>
         <div className='input' style={{ width: '50%', zIndex: 100, backgroundColor: 'white', display: 'flex', justifyContent: 'space-between' }}>
 
