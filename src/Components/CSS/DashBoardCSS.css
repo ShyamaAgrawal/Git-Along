@@ -69,3 +69,29 @@ input:focus {
 a{
   text-decoration: none;
 }
+#logo{
+  animation: animationSequence 8s infinite ease-in-out;
+}
+@keyframes animationSequence {
+  0%, 100% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.2);
+  }
+  60%, 80% {
+      transform: scale(1);
+  }
+  70% {
+      transform: scale(1.1);
+  }
+  90% {
+      transform: scale(1);
+  }
+  95%, 97%, 99% {
+      transform: rotate(-2deg);
+  }
+  96%, 98%, 100% {
+      transform: rotate(2deg);
+  }
+}

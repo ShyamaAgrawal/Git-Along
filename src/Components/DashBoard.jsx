@@ -45,7 +45,7 @@ const DashBoard = () => {
     <div>
       <div className='dashBg'>
         <a href='#footer' style={{ marginLeft: 'auto', marginRight: '20px', color: 'white' }}>About Us</a>
-        <img src={bg} alt="" style={{ position: 'absolute', zIndex: 1, alignContent: 'center' }} />
+        <img src={bg} id='logo' alt="" style={{ position: 'absolute', zIndex: 1, alignContent: 'center' }} />
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100, marginTop: '15%' }}>
           <h1 className='title'>Git-Along</h1>
