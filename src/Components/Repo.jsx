@@ -60,14 +60,11 @@ function Repo() {
                 if (!Array.isArray(data) || data.length === 0) {
                     break;
                 }
-<<<<<<< HEAD
 
-                console.log(i + "-------" + response);
-=======
-    
-                console.log(i + "-------" + response.data);
+                // console.log(i + "-------" + response);
+
+                // console.log(i + "-------" + response.data);
                 console.log(data)
->>>>>>> b4b2208779f5ffac1c3dded7112acb8eccfb2b7e
                 repos.push(...data);
                 i++;
             }
@@ -125,7 +122,7 @@ function Repo() {
                                 <select id="sortBy" value={sortBy} onChange={handleSortChange}>
                                     <option value="name">Name</option>
                                     <option value="forks">Forks</option>
-                                    <option value="star">Stars</option>
+                                    <option value="stargazers_count">Stars</option>
                                     <option value="open_issues">Open Issues</option>
                                 </select>
                             </div>
