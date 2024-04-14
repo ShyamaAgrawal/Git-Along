@@ -158,8 +158,10 @@ function Repo() {
                                     {sortedRepo.map(rep => (
                                         <div key={rep.id} className="repo-card" >
                                             <div className="content">
-                                                <span >{rep.name}</span>
-                                                <p className='des'>{rep.desc}</p>
+                                                <div>
+                                                    <span >{rep.name}</span>
+                                                    <p className='des'>{rep.desc}</p></div>
+                                                <div style={{ backgroundColor: '#10147d', padding: '8px 16px', borderRadius: '30px' }} className='home' ><a  style={{ color: 'white' }} href="">View</a></div>
                                             </div>
                                             <div className="meta">
                                                 <p><i className="ri-git-fork-line"></i>{rep.forks}</p>

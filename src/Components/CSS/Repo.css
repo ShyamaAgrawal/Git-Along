@@ -23,12 +23,6 @@ nav {
   border-bottom: 2px solid rgb(222, 222, 223);
 }
 
-/* .home{
-    background-color: '#10147d';
-    color: white;
-    padding: 5px 10px;
-    border-radius: 10px;
-} */
 section {
   display: flex;
   justify-content: flex-start;
@@ -147,6 +141,11 @@ section {
   font-size: 1.5rem;
 }
 
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .repo-card span:hover {
   text-decoration: underline;
   color: #1f25e9;
