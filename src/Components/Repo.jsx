@@ -9,72 +9,7 @@ import location from '../Images/location.png'
 import followers from '../Images/followers.png'
 //comment
 function Repo() {
-    const [repo, setRepo] = useState([
-        {
-            "id": 1,
-            "name": "Bookstore",
-            "desc": "This is a repository 1",
-            "star": 10,
-            "forks": 5,
-            "open_issues": 3
-        },
-        {
-            "id": 2,
-            "name": "Hackathon",
-            "desc": "This is a repository 2",
-            "star": 14,
-            "forks": 4,
-            "open_issues": 5
-        },
-        {
-            "id": 3,
-            "name": "Project-clg",
-            "desc": "This is a repository 3",
-            "star": 19,
-            "forks": 5,
-            "open_issues": 6
-        },
-        {
-            "id": 4,
-            "name": "Machine learning",
-            "desc": "This is a repository 4",
-            "star": 14,
-            "forks": 3,
-            "open_issues": 8
-        },
-        {
-            "id": 5,
-            "name": "Cloud project",
-            "desc": "This is a repository 5",
-            "star": 19,
-            "forks": 5,
-            "open_issues": 3
-        },
-        {
-            "id": 6,
-            "name": "Gla-2025",
-            "desc": "This is a repository 6",
-            "star": 13,
-            "forks": 8,
-            "open_issues": 6
-        },
-        {
-            "id": 7,
-            "name": "Placements",
-            "desc": "This is a repository 7",
-            "star": 15,
-            "forks": 3,
-            "open_issues": 3
-        },
-        {
-            "id": 8,
-            "name": "Scaler",
-            "desc": "This is a repository 8",
-            "star": 9,
-            "forks": 7,
-            "open_issues": 1
-        }
-    ]);
+    const [repo, setRepo] = useState([]);
     const [sortBy, setSortBy] = useState('name');
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredRepo, setFilteredRepo] = useState([]);
@@ -116,16 +51,16 @@ function Repo() {
     const getRepoDetails = async () => {
         let i = 1;
         const repos = [];
-    
+
         try {
             while (true) {
                 const response = await axios.get(`https://api.github.com/user/${userID}/repos?page=${i}`);
                 const data = response.data;
-    
+
                 if (!Array.isArray(data) || data.length === 0) {
                     break;
                 }
-    
+
                 console.log(i + "-------" + response);
                 repos.push(...data);
                 i++;
@@ -207,7 +142,7 @@ function Repo() {
                                                 <div>
                                                     <span >{rep.name}</span>
                                                     <p className='des'>{rep.description}</p></div>
-                                                <div style={{ backgroundColor: '#10147d', padding: '8px 16px', borderRadius: '30px' }} className='home' ><a style={{ color: 'white' }} href="">View</a></div>
+                                                <div style={{ backgroundColor: '#10147d', padding: '8px 16px', borderRadius: '30px' }} className='home' ><NavLink to={`/repo-stats/${userName}`} style={{ color: 'white' }} href="">View</NavLink></div>
                                             </div>
                                             <div className="meta">
                                                 <p><i className="ri-git-fork-line"></i>{rep.forks}</p>
