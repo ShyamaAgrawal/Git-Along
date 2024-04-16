@@ -14,7 +14,7 @@ import Profile from './Profile'
 const DashBoard = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
-  const [loggedin, setLoggedIn] = useState(false)
+  const [loggedin, setLoggedIn] = useState(true)
 
   useEffect(() => {
 
@@ -61,17 +61,14 @@ const DashBoard = () => {
   return (
     <div>
       <div className='dashBg'>
-        <div style={{ marginLeft: 'auto', marginRight: '20px',display:'flex',alignItems:'center',padding:'5px' }}>
+        <div style={{ marginLeft: 'auto', marginRight: '20px', display: 'flex', alignItems: 'center', padding: '5px', height: '50px' }}>
           <a href='#footer' className='nav-link'>About Us</a>
           {!loggedin ? <button className="nav-link" style={{ marginLeft: '20px', marginRight: '20px' }} onClick={() => { handleLoginClick() }}>
             Login
           </button> :
 
-            <div style={{display:'flex',alignItems:'center'}}>
-              <button className="nav-link" style={{ marginLeft: '20px', marginRight: '20px' }} onClick={() => { handleLoginClick() }}>
-                History
-              </button>
-              <div className="prof-icon" onClick={()=>handleProfile()}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div className="prof-icon" onClick={() => handleProfile()}>
                 <img src={shyama} alt="" className='dp' style={{ width: '35px', height: '35px', marginTop: '2px' }} />
               </div>
             </div>
@@ -140,62 +137,3 @@ const DashBoard = () => {
 }
 
 export default DashBoard
-
-
-
-// import React, { useState } from 'react';
-// import './CSS/DashBoardCSS.css';
-// import bg from '../Images/bg2.png';
-// import Card from './Card';
-// import axios from 'axios';
-// import { NavLink } from 'react-router-dom';
-// import Login from './Login';
-
-// const DashBoard = () => {
-//     const [users, setUsers] = useState([]);
-//     const [search, setSearch] = useState('');
-
-//     const searchUsers = async () => {
-//         try {
-//             const response = await axios.get(`https://api.github.com/search/users?q=${search}`);
-//             const data = response.data;
-//             console.log(data);
-//             setUsers(data.items.slice(0, 6)); // Limiting to top 6 results
-//         } catch (error) {
-//             console.error('Error searching users:', error);
-//         }
-//     };
-
-//     const handleChange = (e) => {
-//         setSearch(e.target.value);
-//         console.log(e.target.value);
-//     };
-
-//     const handleLoginClick = () => {
-//         const modal = document.getElementById('my_modal_3');
-//         if (modal) {
-//             modal.showModal();
-//         }
-//     };
-
-//     return (
-//         <div>
-//             <div className="dashBg">
-//                 <div style={{ marginLeft: 'auto', marginRight: '20px' }}>
-//                     <a href="#footer" className="nav-link">
-//                         About Us
-//                     </a>
-//                     <button className="nav-link" style={{ marginLeft: '20px', marginRight: '20px' }} onClick={handleLoginClick}>
-//                         Login
-//                     </button>
-//                 </div>
-
-//                 {/* Your existing code */}
-
-//                 <Login />
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default DashBoard;
