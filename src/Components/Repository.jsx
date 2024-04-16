@@ -5,9 +5,7 @@ import { NavLink, useParams } from 'react-router-dom'
 import './CSS/Repository.css'
 import readme from '../Images/readme.png'
 import CalendarHeatmap from 'react-calendar-heatmap';
-// import 'react-calendar-heatmap/dist/styles.css';
 // import ReactTooltip from 'react-tooltip';
-import committer from '../Images/shyss.jpg';
 import Commit from './Commit';
 import ReactMarkdown from 'react-markdown';
 
@@ -110,25 +108,28 @@ const Repository = () => {
                 <hr />
                 <div className="mid">
                     <div className="readme">
-<<<<<<< HEAD
-                        <div  style={{ display: 'flex' ,width:'100px', padding:'4px',marginBottom:'5px'}}>
-=======
+
                         <div style={{ display: 'flex', width: '100px', padding: '4px', marginBottom: '5px' }}>
->>>>>>> 8fd2314111c1b55c12c8693cc7fef18ed794ade5
-                            <img src={readme} style={{ width: '20px', marginRight: '5px', }} alt="" />
-                            <h4>README</h4>
-                        </div>
-                        <hr />
-                        <div className='read'>
-                            {/* <p>{readMe}</p> */}
-                            <ReactMarkdown components={{
-                                // Render links as clickable anchor tags
-                                a: ({ node, ...props }) => <a {...props} target="_blank" rel="noopener noreferrer">{props.children}</a>
-                            }}>
-                                {`${readMe}`}
-                            </ReactMarkdown>
+
+                            <div style={{ display: 'flex', width: '100px', padding: '4px', marginBottom: '5px' }}>
+
+                                <img src={readme} style={{ width: '20px', marginRight: '5px', }} alt="" />
+                                <h4>README</h4>
+                            </div>
+                            </div>
+                            <hr />
+                            <div className='read'>
+                                {/* <p>{readMe}</p> */}
+                                <ReactMarkdown components={{
+                                    // Render links as clickable anchor tags
+                                    a: ({ node, ...props }) => <a {...props} target="_blank" rel="noopener noreferrer">{props.children}</a>
+                                }}>
+                                    {`${readMe}`}
+                                </ReactMarkdown>
+                            
                         </div>
                     </div>
+
                     <div className="details">
                         <div className='info'>
                             <p style={{ marginRight: '5px', }}><i className="ri-git-fork-line" style={{ marginRight: '10px', }}></i>Fork</p>
