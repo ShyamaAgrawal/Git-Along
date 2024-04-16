@@ -5,9 +5,7 @@ import { NavLink, useParams } from 'react-router-dom'
 import './CSS/Repository.css'
 import readme from '../Images/readme.png'
 import CalendarHeatmap from 'react-calendar-heatmap';
-// import 'react-calendar-heatmap/dist/styles.css';
 // import ReactTooltip from 'react-tooltip';
-import committer from '../Images/shyss.jpg';
 import Commit from './Commit';
 import ReactMarkdown from 'react-markdown';
 
@@ -110,10 +108,14 @@ const Repository = () => {
                 <hr />
                 <div className="mid">
                     <div className="readme">
+
                         <div style={{ display: 'flex', width: '100px', padding: '4px', marginBottom: '5px' }}>
+
                             <div style={{ display: 'flex', width: '100px', padding: '4px', marginBottom: '5px' }}>
+
                                 <img src={readme} style={{ width: '20px', marginRight: '5px', }} alt="" />
                                 <h4>README</h4>
+                            </div>
                             </div>
                             <hr />
                             <div className='read'>
@@ -124,13 +126,15 @@ const Repository = () => {
                                 }}>
                                     {`${readMe}`}
                                 </ReactMarkdown>
-                            </div>
+                            
                         </div>
-                        <div className="details">
-                            <div className='info'>
-                                <p style={{ marginRight: '5px', }}><i className="ri-git-fork-line" style={{ marginRight: '10px', }}></i>Fork</p>
-                                <div className='num'><p>{repoDetails.forks}</p></div>
-                            </div>
+                    </div>
+
+                    <div className="details">
+                        <div className='info'>
+                            <p style={{ marginRight: '5px', }}><i className="ri-git-fork-line" style={{ marginRight: '10px', }}></i>Fork</p>
+                            <div className='num'><p>{repoDetails.forks}</p></div>
+                        </div>
 
                             <div className='info'>
                                 <p style={{ marginRight: '5px', }}><i className="ri-star-line" style={{ marginRight: '10px', }}></i>Stars</p>
@@ -186,7 +190,6 @@ const Repository = () => {
                     </div>
                 </div>
             </div>
-        </div>
     )
 }
 
