@@ -11,7 +11,7 @@ const App = () => {
       <Routes>
         <Route exact path='/' Component={DashBoard} />
         <Route exact path='/repo-details/:username/:id' Component={Repo} />
-        <Route exact path='/repo-stats/:username' Component={Repository} />
+        <Route exact path='/repo-stats/:username/:reponame' Component={Repository} />
       </Routes>
     </div>
   )
