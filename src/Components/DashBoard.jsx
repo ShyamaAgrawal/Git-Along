@@ -14,7 +14,7 @@ import Profile from './Profile'
 const DashBoard = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
-  const [loggedin, setLoggedIn] = useState(true)
+  const [loggedin, setLoggedIn] = useState(false)
 
   useEffect(() => {
 
@@ -47,7 +47,7 @@ const DashBoard = () => {
   const handleLoginClick = () => {
     const modal = document.getElementById('my_modal');
     if (modal) {
-      // modal.style.backgroundColor='rgba(0,0,0,0.5)';
+      modal.style.display = 'flex';
       modal.showModal();
     }
   };

@@ -16,6 +16,7 @@
   background: none;
   border: none;
   font-size: 1.2rem;
+  margin-right: 10px;
 }
 .nav-link:hover {
   color: #10147d;
