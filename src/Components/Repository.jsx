@@ -108,30 +108,12 @@ const Repository = () => {
                 <hr />
                 <div className="mid">
                     <div className="readme">
-<<<<<<< HEAD
-                        <div style={{ display: 'flex' ,width:'100px', padding:'4px',marginBottom:'5px'}}>
+                        <div style={{ display: 'flex', width: '100px', padding: '4px', marginBottom: '5px' }}>
                             <img src={readme} style={{ width: '20px', marginRight: '5px', }} alt="" />
                             <h4>README</h4>
                         </div>
                         <hr />
                         <div className='readme-desc'>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit, debitis molestiae eligendi ipsum laborum necessitatibus, quo similique expedita perspiciatis adipisci beatae sunt repellat libero blanditiis saepe atque, maxime rem ipsam!
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, dolor a minima aliquid, quisquam ab accusamus, id aut hic vel eum explicabo aspernatur laborum! Quod in recusandae sequi iure culpa. avatar Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, molestiae rerum provident beatae eligendi sint, temporibus harum dolor itaque vitae natus error iure atque nesciunt tempore rem at totam odio.
-                                Aperiam consequatur suscipit neque assumenda. Explicabo soluta laboriosam amet, doloribus obcaecati delectus est impedit aliquid laborum, incidunt neque modi animi nihil possimus quisquam? Iusto quis ad, praesentium culpa veniam adipisci.
-                                Aliquam, modi perspiciatis. Iure nulla perspiciatis repellat at voluptates, accusamus veniam architecto eligendi id officia repudiandae unde nesciunt totam autem ducimus natus velit dolor sit illum. Maiores laudantium itaque explicabo!
-                                Autem ex similique nam amet eius, at et consequuntur, debitis sit corporis, facilis esse eaque saepe dolores qui voluptatum ut nulla placeat accusamus excepturi! Nemo voluptatem corrupti eaque modi recusandae. </p>
-=======
-
-                        <div style={{ display: 'flex', width: '100px', padding: '4px', marginBottom: '5px' }}>
-
-                            <div style={{ display: 'flex', width: '100px', padding: '4px', marginBottom: '5px' }}>
-
-                                <img src={readme} style={{ width: '20px', marginRight: '5px', }} alt="" />
-                                <h4>README</h4>
-                            </div>
-                            </div>
-                            <hr />
-                            <div className='read'>
                                 {/* <p>{readMe}</p> */}
                                 <ReactMarkdown components={{
                                     // Render links as clickable anchor tags
@@ -139,8 +121,7 @@ const Repository = () => {
                                 }}>
                                     {`${readMe}`}
                                 </ReactMarkdown>
-                            
->>>>>>> 818ebf14b5aed4f08a27faca4c0b08d23cc663f7
+
                         </div>
                     </div>
 
