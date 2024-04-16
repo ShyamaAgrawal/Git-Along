@@ -7,6 +7,9 @@ import readme from '../Images/readme.png'
 import CalendarHeatmap from 'react-calendar-heatmap';
 // import 'react-calendar-heatmap/dist/styles.css';
 // import ReactTooltip from 'react-tooltip';
+import committer from '../Images/shyss.jpg';
+import Commit from './Commit';
+
 
 const today = new Date();
 console.log(today)
@@ -139,7 +142,14 @@ const Repository = () => {
                 {/* Commit history */}
                 <div className="commits">
                     <h3>Commit History</h3>
-
+                    <div className="allcommits">
+                        <Commit/>
+                        <Commit />
+                        <Commit />
+                        <Commit />
+                        <Commit />
+                        <Commit />
+                    </div>
                 </div>
             </div>
         </div>
