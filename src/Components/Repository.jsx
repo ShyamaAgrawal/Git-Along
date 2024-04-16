@@ -80,7 +80,7 @@ const Repository = () => {
                 <hr />
                 <div className="mid">
                     <div className="readme">
-                        <div className='read' style={{ display: 'flex' ,width:'100px', padding:'4px',marginBottom:'5px'}}>
+                        <div  style={{ display: 'flex' ,width:'100px', padding:'4px',marginBottom:'5px'}}>
                             <img src={readme} style={{ width: '20px', marginRight: '5px', }} alt="" />
                             <h4>README</h4>
                         </div>

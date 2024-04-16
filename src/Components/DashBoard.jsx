@@ -44,9 +44,10 @@ const DashBoard = () => {
 
   }
   const handleLoginClick = () => {
-    console.log('kash')
     const modal = document.getElementById('my_modal_3');
     if(modal){
+      modal.style.display='flex';
+      // modal.style.backgroundColor='rgba(0,0,0,0.5)';
       modal.showModal();
     }
   };
