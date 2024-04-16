@@ -35,7 +35,7 @@ const Repository = () => {
                 <div className="repo">
                     <div className='repo-name' >
                         <img className='dp' src={userProfile.avatar_url} alt="" />
-                        <h1>Git-Along</h1>
+                        <h1 >Git-Along</h1>
                     </div>
                     <div className='visibility'>
                         <p>Public</p>
@@ -43,7 +43,7 @@ const Repository = () => {
                 </div>
                 <div className="mid">
                     <div className="readme">
-                        <div style={{ display: 'flex' }}>
+                        <div className='read' style={{ display: 'flex' ,width:'100px', padding:'4px',marginBottom:'5px'}}>
                             <img src={readme} style={{ width: '20px', marginRight: '5px', }} alt="" />
                             <h4>README</h4>
                         </div>
