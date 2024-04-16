@@ -9,6 +9,7 @@ import CalendarHeatmap from 'react-calendar-heatmap';
 // import ReactTooltip from 'react-tooltip';
 import committer from '../Images/shyss.jpg';
 import Commit from './Commit';
+import ReactMarkdown from 'react-markdown';
 
 
 const today = new Date();
@@ -16,9 +17,14 @@ console.log(today)
 
 const Repository = () => {
     const [userProfile, setUserProfile] = useState([]);
+    const [readMe, setReadMe] = useState([]);
+    const [repoDetails, setRepoDetails] = useState([]);
+
     const para = useParams();
     const userName = para.username;
-    // console.log(para);
+    const reponame = para.reponame;
+
+    console.log(reponame);
 
 
 
@@ -49,6 +55,8 @@ const Repository = () => {
 
     useEffect(() => {
         getProfileDetails();
+        getReadme();
+        getRepoInfo();
     }, [])
 
     const getProfileDetails = async () => {
@@ -57,6 +65,28 @@ const Repository = () => {
             const data = response.data
             console.log(data)
             setUserProfile(data)
+        } catch (error) {
+            console.error('Error in fetching UserProfile Details:', error);
+        }
+    };
+    const getReadme = async () => {
+        try {
+            const response = await axios.get(`https://api.github.com/repos/${userName}/${reponame}/readme`);
+            const data = response.data.content
+
+            setReadMe(atob(data));
+        } catch (error) {
+            console.error('Error in fetching UserProfile Details:', error);
+        }
+    };
+
+    const getRepoInfo = async () => {
+        try {
+            const response = await axios.get(`https://api.github.com/repos/${userName}/${reponame}`);
+            const data = response.data
+            console.log(data)
+            setRepoDetails(data)
+
         } catch (error) {
             console.error('Error in fetching UserProfile Details:', error);
         }
@@ -71,7 +101,7 @@ const Repository = () => {
                 <div className="repo">
                     <div className='repo-name' >
                         <img className='dp' src={userProfile.avatar_url} alt="" />
-                        <h1>Git-Along</h1>
+                        <h1>{repoDetails.name}</h1>
                     </div>
                     <div className='visibility'>
                         <p>Public</p>
@@ -80,38 +110,44 @@ const Repository = () => {
                 <hr />
                 <div className="mid">
                     <div className="readme">
+<<<<<<< HEAD
                         <div  style={{ display: 'flex' ,width:'100px', padding:'4px',marginBottom:'5px'}}>
+=======
+                        <div style={{ display: 'flex', width: '100px', padding: '4px', marginBottom: '5px' }}>
+>>>>>>> 8fd2314111c1b55c12c8693cc7fef18ed794ade5
                             <img src={readme} style={{ width: '20px', marginRight: '5px', }} alt="" />
                             <h4>README</h4>
                         </div>
                         <hr />
                         <div className='read'>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit, debitis molestiae eligendi ipsum laborum necessitatibus, quo similique expedita perspiciatis adipisci beatae sunt repellat libero blanditiis saepe atque, maxime rem ipsam!
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, dolor a minima aliquid, quisquam ab accusamus, id aut hic vel eum explicabo aspernatur laborum! Quod in recusandae sequi iure culpa. avatar Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, molestiae rerum provident beatae eligendi sint, temporibus harum dolor itaque vitae natus error iure atque nesciunt tempore rem at totam odio.
-                                Aperiam consequatur suscipit neque assumenda. Explicabo soluta laboriosam amet, doloribus obcaecati delectus est impedit aliquid laborum, incidunt neque modi animi nihil possimus quisquam? Iusto quis ad, praesentium culpa veniam adipisci.
-                                Aliquam, modi perspiciatis. Iure nulla perspiciatis repellat at voluptates, accusamus veniam architecto eligendi id officia repudiandae unde nesciunt totam autem ducimus natus velit dolor sit illum. Maiores laudantium itaque explicabo!
-                                Autem ex similique nam amet eius, at et consequuntur, debitis sit corporis, facilis esse eaque saepe dolores qui voluptatum ut nulla placeat accusamus excepturi! Nemo voluptatem corrupti eaque modi recusandae. </p>
+                            {/* <p>{readMe}</p> */}
+                            <ReactMarkdown components={{
+                                // Render links as clickable anchor tags
+                                a: ({ node, ...props }) => <a {...props} target="_blank" rel="noopener noreferrer">{props.children}</a>
+                            }}>
+                                {`${readMe}`}
+                            </ReactMarkdown>
                         </div>
                     </div>
                     <div className="details">
                         <div className='info'>
                             <p style={{ marginRight: '5px', }}><i className="ri-git-fork-line" style={{ marginRight: '10px', }}></i>Fork</p>
-                            <div className='num'><p>5</p></div>
+                            <div className='num'><p>{repoDetails.forks}</p></div>
                         </div>
 
                         <div className='info'>
                             <p style={{ marginRight: '5px', }}><i className="ri-star-line" style={{ marginRight: '10px', }}></i>Stars</p>
-                            <div className='num'>5</div>
+                            <div className='num'>{repoDetails.stargazers_count}</div>
                         </div>
 
                         <div className='info' style={{ width: '40%' }}>
                             <p style={{ marginRight: '5px', }}>Open Issues</p>
-                            <div className='num'>5</div>
+                            <div className='num'>{repoDetails.open_issues}</div>
                         </div>
                         <div className="clone">
                             <h4>Clone</h4>
                             <hr />
-                            <a href="" style={{ fontSize: 'small', color: 'black' }}>https://github.com/ShyamaAgrawal/Git-Along.git</a>
+                            <a href="" style={{ fontSize: 'small', color: 'black' }}>{repoDetails.clone_url}</a>
                         </div>
                     </div>
                 </div>
@@ -143,7 +179,7 @@ const Repository = () => {
                 <div className="commits">
                     <h3>Commit History</h3>
                     <div className="allcommits">
-                        <Commit/>
+                        <Commit />
                         <Commit />
                         <Commit />
                         <Commit />
