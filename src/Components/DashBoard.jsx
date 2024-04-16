@@ -9,11 +9,12 @@ import shyama from '../Images/shyss.jpg'
 import jayant from '../Images/jayant.jpg'
 import kashish from '../Images/Kashish.jpg'
 import Login from './Login'
+import Profile from './Profile'
 
 const DashBoard = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
-
+  const [loggedin, setLoggedIn] = useState(true)
 
   useEffect(() => {
 
@@ -44,22 +45,40 @@ const DashBoard = () => {
 
   }
   const handleLoginClick = () => {
-    const modal = document.getElementById('my_modal_3');
-    if(modal){
-      modal.style.display='flex';
+    const modal = document.getElementById('my_modal');
+    if (modal) {
       // modal.style.backgroundColor='rgba(0,0,0,0.5)';
       modal.showModal();
     }
   };
+  const handleProfile = () => {
+    const profile_modal = document.getElementById('my_modal_2');
+    if (profile_modal) {
+      profile_modal.style.display = 'flex';
+      profile_modal.showModal();
+    }
+  }
   return (
     <div>
       <div className='dashBg'>
-        <div style={{ marginLeft: 'auto', marginRight: '20px' }}>
+        <div style={{ marginLeft: 'auto', marginRight: '20px',display:'flex',alignItems:'center',padding:'5px' }}>
           <a href='#footer' className='nav-link'>About Us</a>
-          <button className="nav-link" style={{ marginLeft: '20px', marginRight: '20px' }} onClick={()=>{handleLoginClick()}}>
+          {!loggedin ? <button className="nav-link" style={{ marginLeft: '20px', marginRight: '20px' }} onClick={() => { handleLoginClick() }}>
             Login
-          </button>
-          <Login/>
+          </button> :
+
+            <div style={{display:'flex',alignItems:'center'}}>
+              <button className="nav-link" style={{ marginLeft: '20px', marginRight: '20px' }} onClick={() => { handleLoginClick() }}>
+                History
+              </button>
+              <div className="prof-icon" onClick={()=>handleProfile()}>
+                <img src={shyama} alt="" className='dp' style={{ width: '35px', height: '35px', marginTop: '2px' }} />
+              </div>
+            </div>
+          }
+          <Login />
+          <Profile />
+
         </div>
 
         <img src={bg} id='logo' alt="" style={{ position: 'absolute', zIndex: 1, alignContent: 'center' }} />

@@ -13,7 +13,7 @@ function Login() {
 
     const onSubmit = (data) => console.log(data);
     const handleLoginClick = () => {
-        const modal = document.getElementById('my_modal_3');
+        const modal = document.getElementById('my_modal');
         if(modal){
             modal.style.display='none';
           modal.close();
@@ -22,7 +22,7 @@ function Login() {
 
     return (
         <>
-            {login === 'login' ?<dialog id="my_modal_3" className="modal">
+            {login === 'login' ?<dialog id="my_modal" className="modal">
                 <div className="modal-box">
                     <form onSubmit={handleSubmit(onSubmit)}>
                        <div className='top'>

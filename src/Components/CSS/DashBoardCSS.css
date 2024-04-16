@@ -19,7 +19,6 @@
 }
 .nav-link:hover {
   color: #10147d;
-  text-decoration: underline;
 }
 .footer {
   background-color: white;
@@ -43,7 +42,7 @@
   margin: 0;
   border: none;
   border-radius: 10px;
-  width: 20%;
+  width: 150px;
   color: white;
   font-size: large;
 }

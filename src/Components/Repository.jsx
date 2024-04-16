@@ -114,9 +114,7 @@ const Repository = () => {
                         </div>
                         <hr />
                         <div className='readme-desc'>
-                                {/* <p>{readMe}</p> */}
                                 <ReactMarkdown components={{
-                                    // Render links as clickable anchor tags
                                     a: ({ node, ...props }) => <a {...props} target="_blank" rel="noopener noreferrer">{props.children}</a>
                                 }}>
                                     {`${readMe}`}
