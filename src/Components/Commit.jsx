@@ -1,7 +1,7 @@
 import React from 'react'
 import committer from '../Images/shyss.jpg';
 import './CSS/DashBoardCSS.css'
-const Commit = () => {
+const Commit = (props) => {
   return (
       <div className="commit">
           <div className="date">
@@ -10,12 +10,12 @@ const Commit = () => {
           </div>
           <div className="break"></div>
           <div className="commit-detail">
-              <h3>Dashboard Created</h3>
+              <h3>{props.name}</h3>
               <div className="committed-by">
                   <h5 style={{ marginRight: '10px', }}>Committed by</h5>
                   <div className="committer">
                       <img src={committer} style={{ width: '25px', height: '25px', borderRadius: '50%', marginRight: '5px' }} alt="" />
-                      <h5>Shyama Agrawal</h5>
+                      <h5>{props.author}</h5>
                   </div>
               </div>
           </div>

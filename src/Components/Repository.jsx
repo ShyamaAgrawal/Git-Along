@@ -17,10 +17,12 @@ const Repository = () => {
     const [userProfile, setUserProfile] = useState([]);
     const [readMe, setReadMe] = useState([]);
     const [repoDetails, setRepoDetails] = useState([]);
+    const [commitHistory, setCommitHistory] = useState([]);
 
     const para = useParams();
     const userName = para.username;
     const reponame = para.reponame;
+    const repoId = para.repoId;
 
     console.log(reponame);
 
@@ -62,7 +64,7 @@ const Repository = () => {
         try {
             const response = await axios.get(`https://api.github.com/users/${userName}`);
             const data = response.data
-            console.log(data)
+            // console.log(data)
             setUserProfile(data)
         } catch (error) {
             console.error('Error in fetching UserProfile Details:', error);
@@ -83,7 +85,7 @@ const Repository = () => {
         try {
             const response = await axios.get(`https://api.github.com/repos/${userName}/${reponame}`);
             const data = response.data
-            console.log(data)
+            // console.log(data)
             setRepoDetails(data)
 
         } catch (error) {
@@ -91,11 +93,22 @@ const Repository = () => {
         }
     };
     const getCommitHistory = async () => {
-        try {
-            const response = await axios.get(`https://api.github.com/repos/${userName}/${reponame}/commits`);
-            const data = response.data
-            console.log(data)
+        let i = 1;
+        const commits = [];
 
+        try {
+            while (true) {
+                const response = await axios.get(`https://api.github.com/repositories/${repoId}/commits?page=${i}`);
+                const data = response.data;
+                if (!Array.isArray(data) || data.length === 0) {
+                    break;
+                }
+                // console.log(data)
+                commits.push(...data);
+                i++;
+            }
+            console.log(commits[0])
+            setCommitHistory(commits);
         } catch (error) {
             console.error('Error in getCommitHistory:', error);
         }
@@ -125,11 +138,11 @@ const Repository = () => {
                         </div>
                         <hr />
                         <div className='readme-desc'>
-                                <ReactMarkdown components={{
-                                    a: ({ node, ...props }) => <a {...props} target="_blank" rel="noopener noreferrer">{props.children}</a>
-                                }}>
-                                    {`${readMe}`}
-                                </ReactMarkdown>
+                            <ReactMarkdown components={{
+                                a: ({ node, ...props }) => <a {...props} target="_blank" rel="noopener noreferrer">{props.children}</a>
+                            }}>
+                                {`${readMe}`}
+                            </ReactMarkdown>
 
                         </div>
                     </div>
@@ -140,60 +153,57 @@ const Repository = () => {
                             <div className='num'><p>{repoDetails.forks}</p></div>
                         </div>
 
-                            <div className='info'>
-                                <p style={{ marginRight: '5px', }}><i className="ri-star-line" style={{ marginRight: '10px', }}></i>Stars</p>
-                                <div className='num'>{repoDetails.stargazers_count}</div>
-                            </div>
-
-                            <div className='info' style={{ width: '40%' }}>
-                                <p style={{ marginRight: '5px', }}>Open Issues</p>
-                                <div className='num'>{repoDetails.open_issues}</div>
-                            </div>
-                            <div className="clone">
-                                <h4>Clone</h4>
-                                <hr />
-                                <a href="" target='_blank' style={{ fontSize: 'small', color: 'black' }}>{`https://github.com/${userName}/${reponame}`}</a>
-                            </div>
+                        <div className='info'>
+                            <p style={{ marginRight: '5px', }}><i className="ri-star-line" style={{ marginRight: '10px', }}></i>Stars</p>
+                            <div className='num'>{repoDetails.stargazers_count}</div>
                         </div>
-                    </div>
-                    <div className="graph">
-                        <h3>Contributions in last year</h3>
-                        <CalendarHeatmap
-                            startDate={shiftDate(today, -365)}
-                            endDate={today}
-                            values={randomValues}
-                            classForValue={value => {
-                                if (!value) {
-                                    return 'color-empty';
-                                }
-                                return `color-github-${value.count}`;
-                            }}
-                            tooltipDataAttrs={value => {
-                                return {
-                                    'data-tip': `${value.date.toISOString().slice(0, 10)} has count: ${value.count
-                                        }`,
-                                };
-                            }}
-                            showWeekdayLabels={true}
-                            onClick={value => alert(`Clicked on value with count: ${value.count}`)}
-                        />
-                        {/* <ReactTooltip /> */}
-                    </div>
 
-                    {/* Commit history */}
-                    <div className="commits">
-                        <h3>Commit History</h3>
-                        <div className="allcommits">
-                            <Commit />
-                            <Commit />
-                            <Commit />
-                            <Commit />
-                            <Commit />
-                            <Commit />
+                        <div className='info' style={{ width: '40%' }}>
+                            <p style={{ marginRight: '5px', }}>Open Issues</p>
+                            <div className='num'>{repoDetails.open_issues}</div>
+                        </div>
+                        <div className="clone">
+                            <h4>Clone</h4>
+                            <hr />
+                            <a href="" target='_blank' style={{ fontSize: 'small', color: 'black' }}>{`https://github.com/${userName}/${reponame}`}</a>
                         </div>
                     </div>
                 </div>
+                <div className="graph">
+                    <h3>Contributions in last year</h3>
+                    <CalendarHeatmap
+                        startDate={shiftDate(today, -365)}
+                        endDate={today}
+                        values={randomValues}
+                        classForValue={value => {
+                            if (!value) {
+                                return 'color-empty';
+                            }
+                            return `color-github-${value.count}`;
+                        }}
+                        tooltipDataAttrs={value => {
+                            return {
+                                'data-tip': `${value.date.toISOString().slice(0, 10)} has count: ${value.count
+                                    }`,
+                            };
+                        }}
+                        showWeekdayLabels={true}
+                        onClick={value => alert(`Clicked on value with count: ${value.count}`)}
+                    />
+                    {/* <ReactTooltip /> */}
+                </div>
+
+                {/* Commit history */}
+                <div className="commits">
+                    <h3>Commit History</h3>
+                    <div className="allcommits">
+                        {commitHistory.map(item => (
+                            <Commit key={item.node_id} name={item.commit.message} author={item.commit.committer.name} />
+                        ))}
+                    </div>
+                </div>
             </div>
+        </div>
     )
 }
 

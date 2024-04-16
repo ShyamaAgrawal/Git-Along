@@ -18,17 +18,11 @@ function Login() {
     };
 
     const handleLoginClick = () => {
-<<<<<<< HEAD
         const modal = document.getElementById('my_modal_3');
         if (modal) {
             modal.style.display = 'none';
             modal.close();
-=======
-        const modal = document.getElementById('my_modal');
-        if(modal){
-            modal.style.display='none';
-          modal.close();
->>>>>>> 55ca2b11616dd16462c0348ded6d55042b0fde89
+
         }
     };
     const signupSubmitHandler = async (e) => {
@@ -51,11 +45,8 @@ function Login() {
 
     return (
         <>
-<<<<<<< HEAD
-            {login === 'login' ? <dialog id="my_modal_3" className="modal">
-=======
+
             {login === 'login' ?<dialog id="my_modal" className="modal">
->>>>>>> 55ca2b11616dd16462c0348ded6d55042b0fde89
                 <div className="modal-box">
                     <form >
                         <div className='top'>
