@@ -198,7 +198,7 @@ const Repository = () => {
                     <h3>Commit History</h3>
                     <div className="allcommits">
                         {commitHistory.map(item => (
-                            <Commit key={item.node_id} name={item.commit.message} author={item.commit.committer.name} />
+                            <Commit key={item.node_id} name={item.commit.message} author={item.commit.committer.name} url={item.comitter.avatar_url} />
                         ))}
                     </div>
                 </div>

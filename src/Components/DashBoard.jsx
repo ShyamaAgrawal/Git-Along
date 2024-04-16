@@ -68,9 +68,7 @@ const DashBoard = () => {
           </button> :
 
             <div style={{display:'flex',alignItems:'center'}}>
-              <button className="nav-link" style={{ marginLeft: '20px', marginRight: '20px' }} onClick={() => { handleLoginClick() }}>
-                History
-              </button>
+             
               <div className="prof-icon" onClick={()=>handleProfile()}>
                 <img src={shyama} alt="" className='dp' style={{ width: '35px', height: '35px', marginTop: '2px' }} />
               </div>

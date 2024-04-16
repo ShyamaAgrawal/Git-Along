@@ -14,7 +14,7 @@ const Commit = (props) => {
               <div className="committed-by">
                   <h5 style={{ marginRight: '10px', }}>Committed by</h5>
                   <div className="committer">
-                      <img src={committer} style={{ width: '25px', height: '25px', borderRadius: '50%', marginRight: '5px' }} alt="" />
+                      <img src={props.url} style={{ width: '25px', height: '25px', borderRadius: '50%', marginRight: '5px' }} alt="" />
                       <h5>{props.author}</h5>
                   </div>
               </div>
