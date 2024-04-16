@@ -108,17 +108,12 @@ const Repository = () => {
                 <hr />
                 <div className="mid">
                     <div className="readme">
-
                         <div style={{ display: 'flex', width: '100px', padding: '4px', marginBottom: '5px' }}>
-
-                            <div style={{ display: 'flex', width: '100px', padding: '4px', marginBottom: '5px' }}>
-
-                                <img src={readme} style={{ width: '20px', marginRight: '5px', }} alt="" />
-                                <h4>README</h4>
-                            </div>
-                            </div>
-                            <hr />
-                            <div className='read'>
+                            <img src={readme} style={{ width: '20px', marginRight: '5px', }} alt="" />
+                            <h4>README</h4>
+                        </div>
+                        <hr />
+                        <div className='readme-desc'>
                                 {/* <p>{readMe}</p> */}
                                 <ReactMarkdown components={{
                                     // Render links as clickable anchor tags
@@ -126,7 +121,7 @@ const Repository = () => {
                                 }}>
                                     {`${readMe}`}
                                 </ReactMarkdown>
-                            
+
                         </div>
                     </div>
 
