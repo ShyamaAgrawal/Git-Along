@@ -55,6 +55,7 @@ const Repository = () => {
         getProfileDetails();
         getReadme();
         getRepoInfo();
+        getCommitHistory();
     }, [])
 
     const getProfileDetails = async () => {
@@ -74,7 +75,7 @@ const Repository = () => {
 
             setReadMe(atob(data));
         } catch (error) {
-            console.error('Error in fetching UserProfile Details:', error);
+            console.error('Error in getReadme:', error);
         }
     };
 
@@ -86,7 +87,17 @@ const Repository = () => {
             setRepoDetails(data)
 
         } catch (error) {
-            console.error('Error in fetching UserProfile Details:', error);
+            console.error('Error in getRepoInfo:', error);
+        }
+    };
+    const getCommitHistory = async () => {
+        try {
+            const response = await axios.get(`https://api.github.com/repos/${userName}/${reponame}/commits`);
+            const data = response.data
+            console.log(data)
+
+        } catch (error) {
+            console.error('Error in getCommitHistory:', error);
         }
     };
     return (
@@ -143,7 +154,7 @@ const Repository = () => {
                             <div className="clone">
                                 <h4>Clone</h4>
                                 <hr />
-                                <a href="" style={{ fontSize: 'small', color: 'black' }}>{repoDetails.clone_url}</a>
+                                <a href="" target='_blank' style={{ fontSize: 'small', color: 'black' }}>{`https://github.com/${userName}/${reponame}`}</a>
                             </div>
                         </div>
                     </div>
