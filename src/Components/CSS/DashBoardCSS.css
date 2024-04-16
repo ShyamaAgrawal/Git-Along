@@ -10,6 +10,14 @@
   align-items: center;
   justify-content: center;
 }
+
+.nav-link {
+  color: white;
+}
+.nav-link:hover {
+  color: #10147d;
+  text-decoration: underline;
+}
 .footer {
   background-color: white;
   height: 50vh;

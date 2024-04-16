@@ -100,7 +100,7 @@ function Repo() {
                         <h3 style={{ lineHeight: 1.5 }}>{userProfile.bio}</h3>
                         {userProfile.email && <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <img src={gmail} style={{ width: '20px', height: '20px', marginRight: '5px' }} alt="" />
-                            <h3>{userProfile.email}</h3>
+                            <p>{userProfile.email}</p>
                         </div>}
                         {userProfile.location && <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <img src={location} style={{ width: '20px', height: '20px', marginRight: '5px' }} alt="" />
@@ -115,7 +115,7 @@ function Repo() {
 
                     </div>
                     <div className="right">
-                        <h1 style={{ color: '#10147d', display: 'inline-block', }}>Your Repositories</h1> <div style={{ display: 'inline-block', border: '1px solid gray', color: '#10147d', padding: '3px', backgroundColor: '#eeeef6', width: '20px', height: '20px', textAlign: 'center', borderRadius: '10px', fontWeight: 'bold', alignSelf: 'center' }}>{repo.length}</div>
+                        <h1 style={{  display: 'inline-block', }}>Your Repositories</h1> <div style={{ display: 'inline-block', border: '1px solid gray', color: '#10147d', padding: '3px', backgroundColor: '#eeeef6', width: '20px', height: '20px', textAlign: 'center', borderRadius: '10px', fontWeight: 'bold', alignSelf: 'center' }}>{repo.length}</div>
                         <div className="func">
                             <div className="sort">
                                 <label htmlFor="sortBy">Sort by:</label>
@@ -145,7 +145,7 @@ function Repo() {
                                                 <div>
                                                     <span >{rep.name}</span>
                                                     <p className='des'>{rep.description}</p></div>
-                                                <div style={{ backgroundColor: '#10147d', padding: '8px 16px', borderRadius: '30px' }} className='home' ><NavLink to={`/repo-stats/${userName}`} style={{ color: 'white' }} href="">View</NavLink></div>
+                                                <NavLink to={`/repo-stats/${userName}`} style={{ color: 'white' }} href=""><div style={{ backgroundColor: '#10147d', padding: '8px 16px', borderRadius: '30px' }} className='home' >View</div></NavLink>
                                             </div>
                                             <div className="meta">
                                                 <p><i className="ri-git-fork-line"></i>{rep.forks}</p>

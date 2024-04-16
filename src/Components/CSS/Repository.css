@@ -1,89 +1,164 @@
 .main {
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top: 2%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 2%;
+  /* background-color: red; */
 }
-.dp{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 1px solid beige;
-    margin-right: 5px;
+nav{
+  position: sticky;
+  top: 0;
+}
+.dp {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid beige;
+  margin-right: 5px;
 }
 
-.repo-name{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-right: 10px;
+.repo-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 10px;
+}
+.head:hover{
+  text-decoration: underline;
 }
 .repo {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
 }
 .visibility {
-    background-color: lightgrey;
-    border: 1px solid gray;
-    border-radius: 30px;
-    padding: 1px 10px;
+  background-color: lightgrey;
+  border: 1px solid gray;
+  border-radius: 30px;
+  padding: 1px 10px;
 }
 
 /* mid-section */
 
 .mid {
-    margin-top: 20px;
-    display: flex;
+  margin-top: 20px;
+  display: flex;
 }
 .readme {
-    width: 70%;
-    border: 1px solid gray;
-    border-radius: 10px;
-    height: 250px;
-    padding: 10px;
-    background-color: #eeeef6;
+  width: 70%;
+  border: 1px solid gray;
+
+  border-radius: 10px;
+  height: 250px;
+  padding: 10px;
+  background-color: #eeeef6;
+}
+.read{
+  height: 220px;
+  overflow: auto;
+}
+.read::-webkit-scrollbar {
+        display: none;
+    }
+
+.details {
+  width: 30%;
+  margin-left: 20px;
+  height: 270px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.details{
-    width: 30%;
-    margin-left: 20px;
-    height: 270px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.info{
-    border: 1px solid gray ;
-    width: 30%;
-    height: 30px;
-    padding: 4px 4px;
-    text-align: center;
-    background-color: #eeeef6;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+.info {
+  border: 1px solid gray;
+  width: 30%;
+  height: 30px;
+  padding: 4px 4px;
+  text-align: center;
+  background-color: #eeeef6;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 .num {
-    border-radius: 5px;
-    width: 20px;
-    height: 20px;
-    background-color: white;
-    border: 1px solid gray;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  border-radius: 5px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border: 1px solid gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.clone{
-    border: 1px solid gray;
+.clone {
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #eeeef6;
+}
+.clone a:hover {
+  color: #10147d !important;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* .react-calendar-heatmap .color-scale-1 { fill: #d6e685; }
+.react-calendar-heatmap .color-scale-2 { fill: #8cc665; }
+.react-calendar-heatmap .color-scale-3 { fill: #44a340; }
+.react-calendar-heatmap .color-scale-4 { fill: #1e6823; } */
+.graph {
+  height: 250px;
+  padding-top: 20px;
+  /* background-color: purple; */
+}
+
+.react-calendar-heatmap {
+    height: 100%;
+    width: 100%;
+    /* border: 1px solid gray; */
     border-radius: 10px;
-    padding: 10px;
-    background-color: #eeeef6;
+    padding-top: 10px;
+    
+    /* background-color: #eeeef6; */
 }
-.clone a:hover{
-    color: #10147d !important;
-    cursor: pointer;
-    text-decoration: underline;
+.react-calendar-heatmap text {
+  font-size: 8px;
+  fill: #aaa;
+  margin-right: 20px;
+}
+
+.react-calendar-heatmap .react-calendar-heatmap-small-text {
+  font-size: 5px;
+}
+
+.react-calendar-heatmap rect:hover {
+  stroke: #555;
+  stroke-width: 1px;
+}
+
+.react-calendar-heatmap .color-empty {
+  fill: #eeeeee;
+}
+
+.react-calendar-heatmap .color-filled {
+  fill: #8cc665;
+}
+
+.react-calendar-heatmap .color-github-0 {
+  fill: #eeeeee;
+}
+.react-calendar-heatmap .color-github-1 {
+  fill: #d6e685;
+}
+.react-calendar-heatmap .color-github-2 {
+  fill: #8cc665;
+}
+.react-calendar-heatmap .color-github-3 {
+  fill: #44a340;
+}
+.react-calendar-heatmap .color-github-4 {
+  fill: #1e6823;
 }

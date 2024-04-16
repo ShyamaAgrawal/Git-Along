@@ -45,7 +45,11 @@ const DashBoard = () => {
   return (
     <div>
       <div className='dashBg'>
-        <a href='#footer' style={{ marginLeft: 'auto', marginRight: '20px', color: 'white' }}>About Us</a>
+        <div style={{ marginLeft: 'auto', marginRight: '20px' }}>
+          <a href='#footer' className='nav-link'>About Us</a>
+          <a href='#' className='nav-link' style={{ marginLeft: '20px', marginRight: '20px'}}>Login</a>
+        </div>
+
         <img src={bg} id='logo' alt="" style={{ position: 'absolute', zIndex: 1, alignContent: 'center' }} />
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100, marginTop: '15%' }}>
@@ -59,7 +63,7 @@ const DashBoard = () => {
         </div>
         <div style={{ zIndex: 100 }} className='cards'>
           {users.map((user, index) => {
-            return <NavLink key={index}  to={`/repo-details/${user.login}/${user.id}`}>
+            return <NavLink key={index} to={`/repo-details/${user.login}/${user.id}`}>
               <Card key={index} username={user.login} dp={user.avatar_url} />
             </NavLink>
           })}

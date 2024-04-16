@@ -128,7 +128,7 @@ section {
 .repo-card {
   width: calc(50% - 10px);
   background-color: #eeeef6;
-  color: #10147d;
+  /* color: #10147d; */
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
@@ -139,8 +139,12 @@ section {
 
 .repo-card span {
   font-size: 1.1rem;
+  font-weight:500;
 }
-
+.des{
+  font-size: 0.8rem;
+  color: gray;
+}
 .content {
   display: flex;
   align-items: flex-start;
