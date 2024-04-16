@@ -145,7 +145,7 @@ function Repo() {
                                                 <div>
                                                     <span >{rep.name}</span>
                                                     <p className='des'>{rep.description}</p></div>
-                                                <NavLink to={`/repo-stats/${userName}`} style={{ color: 'white' }} href=""><div style={{ backgroundColor: '#10147d', padding: '8px 16px', borderRadius: '30px' }} className='home' >View</div></NavLink>
+                                                <NavLink to={`/repo-stats/${userName}/${rep.name}`} style={{ color: 'white' }} href=""><div style={{ backgroundColor: '#10147d', padding: '8px 16px', borderRadius: '30px' }} className='home' >View</div></NavLink>
                                             </div>
                                             <div className="meta">
                                                 <p><i className="ri-git-fork-line"></i>{rep.forks}</p>
