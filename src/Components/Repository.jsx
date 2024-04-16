@@ -110,81 +110,79 @@ const Repository = () => {
                 <hr />
                 <div className="mid">
                     <div className="readme">
-<<<<<<< HEAD
-                        <div  style={{ display: 'flex' ,width:'100px', padding:'4px',marginBottom:'5px'}}>
-=======
                         <div style={{ display: 'flex', width: '100px', padding: '4px', marginBottom: '5px' }}>
->>>>>>> 8fd2314111c1b55c12c8693cc7fef18ed794ade5
-                            <img src={readme} style={{ width: '20px', marginRight: '5px', }} alt="" />
-                            <h4>README</h4>
-                        </div>
-                        <hr />
-                        <div className='read'>
-                            {/* <p>{readMe}</p> */}
-                            <ReactMarkdown components={{
-                                // Render links as clickable anchor tags
-                                a: ({ node, ...props }) => <a {...props} target="_blank" rel="noopener noreferrer">{props.children}</a>
-                            }}>
-                                {`${readMe}`}
-                            </ReactMarkdown>
-                        </div>
-                    </div>
-                    <div className="details">
-                        <div className='info'>
-                            <p style={{ marginRight: '5px', }}><i className="ri-git-fork-line" style={{ marginRight: '10px', }}></i>Fork</p>
-                            <div className='num'><p>{repoDetails.forks}</p></div>
-                        </div>
-
-                        <div className='info'>
-                            <p style={{ marginRight: '5px', }}><i className="ri-star-line" style={{ marginRight: '10px', }}></i>Stars</p>
-                            <div className='num'>{repoDetails.stargazers_count}</div>
-                        </div>
-
-                        <div className='info' style={{ width: '40%' }}>
-                            <p style={{ marginRight: '5px', }}>Open Issues</p>
-                            <div className='num'>{repoDetails.open_issues}</div>
-                        </div>
-                        <div className="clone">
-                            <h4>Clone</h4>
+                            <div style={{ display: 'flex', width: '100px', padding: '4px', marginBottom: '5px' }}>
+                                <img src={readme} style={{ width: '20px', marginRight: '5px', }} alt="" />
+                                <h4>README</h4>
+                            </div>
                             <hr />
-                            <a href="" style={{ fontSize: 'small', color: 'black' }}>{repoDetails.clone_url}</a>
+                            <div className='read'>
+                                {/* <p>{readMe}</p> */}
+                                <ReactMarkdown components={{
+                                    // Render links as clickable anchor tags
+                                    a: ({ node, ...props }) => <a {...props} target="_blank" rel="noopener noreferrer">{props.children}</a>
+                                }}>
+                                    {`${readMe}`}
+                                </ReactMarkdown>
+                            </div>
+                        </div>
+                        <div className="details">
+                            <div className='info'>
+                                <p style={{ marginRight: '5px', }}><i className="ri-git-fork-line" style={{ marginRight: '10px', }}></i>Fork</p>
+                                <div className='num'><p>{repoDetails.forks}</p></div>
+                            </div>
+
+                            <div className='info'>
+                                <p style={{ marginRight: '5px', }}><i className="ri-star-line" style={{ marginRight: '10px', }}></i>Stars</p>
+                                <div className='num'>{repoDetails.stargazers_count}</div>
+                            </div>
+
+                            <div className='info' style={{ width: '40%' }}>
+                                <p style={{ marginRight: '5px', }}>Open Issues</p>
+                                <div className='num'>{repoDetails.open_issues}</div>
+                            </div>
+                            <div className="clone">
+                                <h4>Clone</h4>
+                                <hr />
+                                <a href="" style={{ fontSize: 'small', color: 'black' }}>{repoDetails.clone_url}</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="graph">
-                    <h3>Contributions in last year</h3>
-                    <CalendarHeatmap
-                        startDate={shiftDate(today, -365)}
-                        endDate={today}
-                        values={randomValues}
-                        classForValue={value => {
-                            if (!value) {
-                                return 'color-empty';
-                            }
-                            return `color-github-${value.count}`;
-                        }}
-                        tooltipDataAttrs={value => {
-                            return {
-                                'data-tip': `${value.date.toISOString().slice(0, 10)} has count: ${value.count
-                                    }`,
-                            };
-                        }}
-                        showWeekdayLabels={true}
-                        onClick={value => alert(`Clicked on value with count: ${value.count}`)}
-                    />
-                    {/* <ReactTooltip /> */}
-                </div>
+                    <div className="graph">
+                        <h3>Contributions in last year</h3>
+                        <CalendarHeatmap
+                            startDate={shiftDate(today, -365)}
+                            endDate={today}
+                            values={randomValues}
+                            classForValue={value => {
+                                if (!value) {
+                                    return 'color-empty';
+                                }
+                                return `color-github-${value.count}`;
+                            }}
+                            tooltipDataAttrs={value => {
+                                return {
+                                    'data-tip': `${value.date.toISOString().slice(0, 10)} has count: ${value.count
+                                        }`,
+                                };
+                            }}
+                            showWeekdayLabels={true}
+                            onClick={value => alert(`Clicked on value with count: ${value.count}`)}
+                        />
+                        {/* <ReactTooltip /> */}
+                    </div>
 
-                {/* Commit history */}
-                <div className="commits">
-                    <h3>Commit History</h3>
-                    <div className="allcommits">
-                        <Commit />
-                        <Commit />
-                        <Commit />
-                        <Commit />
-                        <Commit />
-                        <Commit />
+                    {/* Commit history */}
+                    <div className="commits">
+                        <h3>Commit History</h3>
+                        <div className="allcommits">
+                            <Commit />
+                            <Commit />
+                            <Commit />
+                            <Commit />
+                            <Commit />
+                            <Commit />
+                        </div>
                     </div>
                 </div>
             </div>
