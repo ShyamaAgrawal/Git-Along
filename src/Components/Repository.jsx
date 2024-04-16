@@ -80,12 +80,12 @@ const Repository = () => {
                 <hr />
                 <div className="mid">
                     <div className="readme">
-                        <div className='read' style={{ display: 'flex' ,width:'100px', padding:'4px',marginBottom:'5px'}}>
+                        <div style={{ display: 'flex' ,width:'100px', padding:'4px',marginBottom:'5px'}}>
                             <img src={readme} style={{ width: '20px', marginRight: '5px', }} alt="" />
                             <h4>README</h4>
                         </div>
                         <hr />
-                        <div className='read'>
+                        <div className='readme-desc'>
                             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit, debitis molestiae eligendi ipsum laborum necessitatibus, quo similique expedita perspiciatis adipisci beatae sunt repellat libero blanditiis saepe atque, maxime rem ipsam!
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, dolor a minima aliquid, quisquam ab accusamus, id aut hic vel eum explicabo aspernatur laborum! Quod in recusandae sequi iure culpa. avatar Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, molestiae rerum provident beatae eligendi sint, temporibus harum dolor itaque vitae natus error iure atque nesciunt tempore rem at totam odio.
                                 Aperiam consequatur suscipit neque assumenda. Explicabo soluta laboriosam amet, doloribus obcaecati delectus est impedit aliquid laborum, incidunt neque modi animi nihil possimus quisquam? Iusto quis ad, praesentium culpa veniam adipisci.
