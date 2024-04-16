@@ -23,11 +23,11 @@ function Login() {
             <dialog id="my_modal_3" className="modal">
                 <div className="modal-box">
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <NavLink to="/" className="close-btn">
-                            ✕
-                        </NavLink>
+                        {/* <NavLink to="/" className="close-btn">
+                            
+                        </NavLink> */}
                         <button className="nav-link" style={{ marginLeft: '20px', marginRight: '20px' }} onClick={() => { handleLoginClick() }}>
-                            Login
+                        ✕
                         </button>
                         <h1>Login</h1>
                         <div>
