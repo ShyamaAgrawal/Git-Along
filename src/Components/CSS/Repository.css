@@ -26,6 +26,9 @@ nav{
 .head:hover{
   text-decoration: underline;
 }
+.repo-name h1:hover{
+    text-decoration: underline;
+}
 .repo {
   display: flex;
   flex-direction: row;
@@ -70,6 +73,11 @@ nav{
   flex-direction: column;
   justify-content: space-between;
 }
+.read:hover{
+    background:  #c8c8cc;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
 
 .info {
   border: 1px solid gray;
@@ -83,6 +91,9 @@ nav{
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+.info:hover{
+    background: rgb(193, 189, 189);
 }
 .num {
   border-radius: 5px;
