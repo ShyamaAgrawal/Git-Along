@@ -1,4 +1,4 @@
-// import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './CSS/DashBoardCSS.css'
 // import gitlogo from '../Images/github.png'
 import bg from '../Images/bg2.png'
@@ -7,15 +7,15 @@ import axios from 'axios'
 import shyama from '../Images/shyss.jpg'
 import jayant from '../Images/jayant.jpg'
 import kashish from '../Images/Kashish.jpg'
-
-import { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import Login from './Login'
 
 const DashBoard = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
 
+
   useEffect(() => {
+
     const debounceSearch = setTimeout(() => {
       if (search.trim() !== '') {
         searchUsers();
@@ -42,10 +42,24 @@ const DashBoard = () => {
     console.log(e.target.value);
 
   }
+  const handleLoginClick = () => {
+    console.log('kash')
+    const modal = document.getElementById('my_modal_3');
+    if(modal){
+      modal.showModal();
+    }
+  };
   return (
     <div>
       <div className='dashBg'>
-        <a href='#footer' style={{ marginLeft: 'auto', marginRight: '20px', color: 'white' }}>About Us</a>
+        <div style={{ marginLeft: 'auto', marginRight: '20px' }}>
+          <a href='#footer' className='nav-link'>About Us</a>
+          <button className="nav-link" style={{ marginLeft: '20px', marginRight: '20px' }} onClick={()=>{handleLoginClick()}}>
+            Login
+          </button>
+          <Login/>
+        </div>
+
         <img src={bg} id='logo' alt="" style={{ position: 'absolute', zIndex: 1, alignContent: 'center' }} />
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 100, marginTop: '15%' }}>
@@ -59,7 +73,7 @@ const DashBoard = () => {
         </div>
         <div style={{ zIndex: 100 }} className='cards'>
           {users.map((user, index) => {
-            return <NavLink key={index}  to={`/repo-details/${user.login}/${user.id}`}>
+            return <NavLink key={index} to={`/repo-details/${user.login}/${user.id}`}>
               <Card key={index} username={user.login} dp={user.avatar_url} />
             </NavLink>
           })}
@@ -105,3 +119,62 @@ const DashBoard = () => {
 }
 
 export default DashBoard
+
+
+
+// import React, { useState } from 'react';
+// import './CSS/DashBoardCSS.css';
+// import bg from '../Images/bg2.png';
+// import Card from './Card';
+// import axios from 'axios';
+// import { NavLink } from 'react-router-dom';
+// import Login from './Login';
+
+// const DashBoard = () => {
+//     const [users, setUsers] = useState([]);
+//     const [search, setSearch] = useState('');
+
+//     const searchUsers = async () => {
+//         try {
+//             const response = await axios.get(`https://api.github.com/search/users?q=${search}`);
+//             const data = response.data;
+//             console.log(data);
+//             setUsers(data.items.slice(0, 6)); // Limiting to top 6 results
+//         } catch (error) {
+//             console.error('Error searching users:', error);
+//         }
+//     };
+
+//     const handleChange = (e) => {
+//         setSearch(e.target.value);
+//         console.log(e.target.value);
+//     };
+
+//     const handleLoginClick = () => {
+//         const modal = document.getElementById('my_modal_3');
+//         if (modal) {
+//             modal.showModal();
+//         }
+//     };
+
+//     return (
+//         <div>
+//             <div className="dashBg">
+//                 <div style={{ marginLeft: 'auto', marginRight: '20px' }}>
+//                     <a href="#footer" className="nav-link">
+//                         About Us
+//                     </a>
+//                     <button className="nav-link" style={{ marginLeft: '20px', marginRight: '20px' }} onClick={handleLoginClick}>
+//                         Login
+//                     </button>
+//                 </div>
+
+//                 {/* Your existing code */}
+
+//                 <Login />
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default DashBoard;
