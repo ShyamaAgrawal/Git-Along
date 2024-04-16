@@ -116,10 +116,6 @@ nav{
   text-decoration: underline;
 }
 
-/* .react-calendar-heatmap .color-scale-1 { fill: #d6e685; }
-.react-calendar-heatmap .color-scale-2 { fill: #8cc665; }
-.react-calendar-heatmap .color-scale-3 { fill: #44a340; }
-.react-calendar-heatmap .color-scale-4 { fill: #1e6823; } */
 .graph {
   height: 250px;
   padding-top: 20px;
@@ -155,21 +151,73 @@ nav{
 }
 
 .react-calendar-heatmap .color-filled {
-  fill: #8cc665;
+  fill: #0077b6;
 }
 
 .react-calendar-heatmap .color-github-0 {
   fill: #eeeeee;
 }
 .react-calendar-heatmap .color-github-1 {
-  fill: #d6e685;
+  fill: #0096c7;
 }
 .react-calendar-heatmap .color-github-2 {
-  fill: #8cc665;
+  fill: #0077b6;
 }
 .react-calendar-heatmap .color-github-3 {
-  fill: #44a340;
+  fill: #023e8a;
 }
 .react-calendar-heatmap .color-github-4 {
-  fill: #1e6823;
+  fill: #03045e;
+}
+
+/* commit-section */
+.allcommits{
+  margin-top: 10px;
+}
+.commit{
+  border-bottom: 2px solid gray;
+  display: flex;
+}
+.date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  background-color: #eeeeee;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: 10px;
+}
+.date h3 {
+  color: #10147d;
+  font-size: x-large;
+}
+.date h5{
+  color: gray;
+  font-size: large;
+}
+.break{
+  width: 5px;
+  background-color: gray;
+}
+.commit-detail{
+  flex: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  padding-left: 50px;
+  /* background-color: plum; */
+}
+
+.committed-by{
+  display: flex;
+  align-items: center;
+}
+
+.committer{
+  display: flex;
+  align-items: center;
+
 }
