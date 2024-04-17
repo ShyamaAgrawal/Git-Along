@@ -49,7 +49,7 @@ const Repository = () => {
     const randomValues = getRange(365).map(index => {
         return {
             date: shiftDate(today, -index),
-            count: getRandomInt(1, 3),
+            count: getRandomInt(0, 0),
         };
     });
     const [graphValues, setGraphValues] = useState(randomValues);
