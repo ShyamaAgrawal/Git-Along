@@ -18,7 +18,7 @@
 }
 .cross{
     color: white;
-    background: #6591ef;
+    background: #10147d;
     border-radius: 5px;
     width: 25px;
     height: 25px;
@@ -32,7 +32,9 @@
 .user-details input{
     width: 90%;
     padding: 8px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    border: 2px solid gray;
+    border-radius: 5px;
 }
 .user-details input:focus{
     border: 2px solid rgb(24, 81, 161);

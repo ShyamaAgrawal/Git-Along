@@ -15,6 +15,19 @@ const DashBoard = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
   const [loggedin, setLoggedIn] = useState(false)
+  const [userProfile, setUserProfile] = useState([])
+  useEffect(() => {
+    let data = (localStorage.getItem('username'));
+    console.log(data)
+    if (data == null) {
+      setLoggedIn(false)
+    }
+    else {
+      setLoggedIn(true)
+      getProfileDetails();
+    }
+
+  }, [])
 
   useEffect(() => {
 
@@ -28,6 +41,18 @@ const DashBoard = () => {
 
     return () => clearTimeout(debounceSearch);
   }, [search]);
+
+  const getProfileDetails = async () => {
+    let userName =await localStorage.getItem('username');
+    try {
+      const response = await axios.get(`https://api.github.com/users/${userName}`);
+      const data = response.data
+      console.log(response)
+      setUserProfile(data)
+    } catch (error) {
+      console.error('Error in fetching UserProfile Details:', error);
+    }
+  };
 
   const searchUsers = async () => {
     try {
@@ -67,14 +92,14 @@ const DashBoard = () => {
             Login
           </button> :
 
-            <div style={{display:'flex',alignItems:'center'}}>
-              <div className="prof-icon" onClick={()=>handleProfile()}>
-                <img src={shyama} alt="" className='dp' style={{ width: '35px', height: '35px', marginTop: '2px' }} />
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div className="prof-icon" onClick={() => handleProfile()}>
+                <img src={userProfile.avatar_url} alt="" className='dp' style={{ width: '35px', height: '35px', marginTop: '2px' }} />
               </div>
             </div>
           }
-          <Login />
-          <Profile />
+          <Login setLoggedIn={setLoggedIn}/>
+          <Profile setLoggedIn={setLoggedIn} userProfile={userProfile}/>
 
         </div>
 

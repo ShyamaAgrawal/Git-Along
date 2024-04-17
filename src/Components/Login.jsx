@@ -3,10 +3,12 @@ import { Link, NavLink } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import './CSS/login.css'
 import axios from 'axios'
+import Loader from "react-js-loader";
 
-function Login() {
+function Login(props) {
     const [login, setLogin] = useState('login');
     const [data, setData] = useState({ name: "", username: "", email: "", password: "" });
+    const[load,setLoad] =useState(false);
 
     const handleChange = (e) => {
         console.log(e)
@@ -48,12 +50,20 @@ function Login() {
             password: `${data.password}`,
         };
         console.log(payload)
+        setLoad(true)
         try {
             const response = await axios.post(`https:/gitalong.onrender.com/login-user`, payload);
-            console.log(response);
+            let username = response.data.response.username
+            localStorage.setItem('username',username);
+            console.log(username);
+            props.setLoggedIn(true)
+        setLoad(false)
+
         }
         catch (error) {
             console.log(error);
+        setLoad(false)
+
         }
     };
 
@@ -65,8 +75,8 @@ function Login() {
                 <div className="modal-box">
                     <form onSubmit={(e) => { loginSubmitHandler(e) }}>
                         <div className='top'>
-                            <h1>Login</h1>
-                            <button className="cross" onClick={() => { handleLoginClick() }}>
+                            <h1 style={{color:'#10147d'}}>Login</h1>
+                            <button className="cross" onClick={() => { handleLoginClick() }} type='button'>
                                 ✕
                             </button>
                         </div>
@@ -92,7 +102,7 @@ function Login() {
 
                         </div>
                         <div className='bottom'>
-                            <button className='but' type="submit">Login</button>
+                            <button className='but' type="submit" onClick={()=>{handleLoginClick()}}>Login</button>
                             <p>
                                 Don't have an account? <span className='switch' onClick={() => setLogin('signup')}>SignUp</span>
                             </p>
@@ -104,8 +114,8 @@ function Login() {
                     <div className="modal-box" style={{ height: '500px' }}>
                         <form onSubmit={(e) => { signupSubmitHandler(e) }}>
                             <div className='top'>
-                                <h1>Sign Up</h1>
-                                <button className="cross" onClick={() => { handleLoginClick() }}>
+                                <h1 style={{color:'#10147d'}}>Sign Up</h1>
+                                <button className="cross" onClick={() => { handleLoginClick() }} type='button'>
                                     ✕
                                 </button>
                             </div>
@@ -147,8 +157,11 @@ function Login() {
                             </div>
                         </form>
                     </div>
+                    
                 </dialog>
+                
             }
+            
         </>
     );
 }
