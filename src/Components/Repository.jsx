@@ -1,3 +1,4 @@
+
 // import React from 'react'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
@@ -49,9 +50,11 @@ const Repository = () => {
     const randomValues = getRange(365).map(index => {
         return {
             date: shiftDate(today, -index),
-            count: getRandomInt(1, 3),
+            count: getRandomInt(0, 0),
         };
     });
+    const [graphValues, setGraphValues] = useState(randomValues);
+    
 
     useEffect(() => {
         getProfileDetails();
@@ -95,6 +98,7 @@ const Repository = () => {
     const getCommitHistory = async () => {
         let i = 1;
         const commits = [];
+        const graphData = {};
 
         try {
             while (true) {
@@ -103,16 +107,35 @@ const Repository = () => {
                 if (!Array.isArray(data) || data.length === 0) {
                     break;
                 }
-                // console.log(data)
                 commits.push(...data);
                 i++;
             }
-            console.log(commits[0])
             setCommitHistory(commits);
+            commits.forEach(item => {
+                const date = item.commit.committer.date.slice(0, 10); // Extract the date part only
+                if (!graphData[date]) {
+                    graphData[date] = 1; // Initialize count to 1 for the first occurrence of each date
+                } else {
+                    graphData[date]++; // Increment count for subsequent occurrences of the same date
+                }
+            });
+
+            const graphDataArray = Object.entries(graphData).map(([date, count]) => ({ date, count }));
+            console.log(graphDataArray);
+
+            // Function to convert the graphData object to an array of values
+            const values = graphDataArray.map(entry => ({
+                date: new Date(entry.date),
+                count: entry.count,
+            }));
+            console.log(values);
+            setGraphValues(values)
+
         } catch (error) {
             console.error('Error in getCommitHistory:', error);
         }
     };
+
     return (
         <div>
             <nav>
@@ -174,21 +197,21 @@ const Repository = () => {
                     <CalendarHeatmap
                         startDate={shiftDate(today, -365)}
                         endDate={today}
-                        values={randomValues}
+                        values={graphValues}
                         classForValue={value => {
                             if (!value) {
                                 return 'color-empty';
                             }
                             return `color-github-${value.count}`;
                         }}
-                        tooltipDataAttrs={value => {
-                            return {
-                                'data-tip': `${value.date.toISOString().slice(0, 10)} has count: ${value.count
-                                    }`,
-                            };
-                        }}
+                        // tooltipDataAttrs={value => {
+                        //     return {
+                        //         'data-tip': `${value.date.toISOString().slice(0, 10)} has count: ${value.count
+                        //             }`,
+                        //     };
+                        // }}
                         showWeekdayLabels={true}
-                        onClick={value => alert(`Clicked on value with count: ${value.count}`)}
+                        onClick={value => alert(`${value.date}: Total commits-${value.count}`)}
                     />
                     {/* <ReactTooltip /> */}
                 </div>
@@ -198,7 +221,7 @@ const Repository = () => {
                     <h3>Commit History</h3>
                     <div className="allcommits">
                         {commitHistory.map(item => (
-                            <Commit key={item.node_id} name={item.commit.message} author={item.commit.committer.name} />
+                            <Commit key={item.node_id} name={item.commit.message} author={item.commit.committer.name} url={item.author.avatar_url} date={item.commit.committer.date} />
                         ))}
                     </div>
                 </div>
