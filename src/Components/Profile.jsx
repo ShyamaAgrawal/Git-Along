@@ -16,7 +16,7 @@ const Profile = () => {
     return (
         <div>
 
-            <dialog id="my_modal_2" className="profile-box" >
+            <dialog id="my_modal_2" className="profile-box">
                 <div className="profile-modal">
                     <button className="close"  onClick={() => { handleLoginClick() }} >✕</button>
                     <img className='avatar' src={shyama} alt="" />
