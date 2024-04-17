@@ -160,17 +160,48 @@ nav{
   fill: #eeeeee;
 }
 .react-calendar-heatmap .color-github-1 {
-  fill: #0096c7;
+  fill: #a3e8ff;
 }
 .react-calendar-heatmap .color-github-2 {
-  fill: #0077b6;
+  fill: #5fc7ff;
 }
 .react-calendar-heatmap .color-github-3 {
-  fill: #023e8a;
+  fill: #4998ff;
 }
 .react-calendar-heatmap .color-github-4 {
-  fill: #03045e;
+  fill: #4447ff;
 }
+.react-calendar-heatmap .color-github-5 {
+  fill: #2226ff;
+}
+.react-calendar-heatmap .color-github-6 {
+  fill: #0b0fff;
+}
+.react-calendar-heatmap .color-github-7 {
+  fill: #1900d9;
+}
+.react-calendar-heatmap .color-github-8 {
+  fill: #000289;
+}
+.react-calendar-heatmap .color-github-9 {
+  fill: #00014a;
+}
+.react-calendar-heatmap .color-github-10 {
+  fill: #000136;
+}
+.react-calendar-heatmap .color-github-11 {
+  fill: #000135;
+}
+.react-calendar-heatmap .color-github-12 {
+  fill: #00012e;
+}
+.react-calendar-heatmap .color-github-13 {
+  fill: #30005d;
+}
+.react-calendar-heatmap .color-github-14 {
+  fill: #1c0035;
+}
+
 
 /* commit-section */
 .allcommits{
