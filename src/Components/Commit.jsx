@@ -23,7 +23,7 @@ const Commit = (props) => {
           </div>
           <div className="break"></div>
           <div className="commit-detail">
-              <h3>{props.name}</h3>
+              <h4>{props.name}</h4>
               <div className="committed-by">
                   <h5 style={{ marginRight: '10px', }}>Committed by</h5>
                   <div className="committer">
