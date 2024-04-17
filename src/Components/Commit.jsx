@@ -2,11 +2,24 @@ import React from 'react'
 import committer from '../Images/shyss.jpg';
 import './CSS/DashBoardCSS.css'
 const Commit = (props) => {
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        const options = { day: '2-digit', month: 'short', year: 'numeric' };
+        return new Intl.DateTimeFormat('en-US', options).format(date);
+    }
+
+    function formatTime(dateString) {
+        const date = new Date(dateString);
+        const timeOptions = { hour: '2-digit', minute: '2-digit', hour12: true };
+        const formattedTime = new Intl.DateTimeFormat('en-US', timeOptions).format(date);
+        
+        return formattedTime;
+    }
   return (
       <div className="commit">
           <div className="date">
-              <h3>16 April</h3>
-              <h5>12:00 AM</h5>
+              <h3>{formatDate(props.date)}</h3>
+              <h5>{formatTime(props.date)}</h5>
           </div>
           <div className="break"></div>
           <div className="commit-detail">

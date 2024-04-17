@@ -41,14 +41,29 @@ function Login() {
             console.log(error);
         }
     };
+    const loginSubmitHandler = async (e) => {
+        e.preventDefault();
+        const payload = {
+            email: `${data.email}`,
+            password: `${data.password}`,
+        };
+        console.log(payload)
+        try {
+            const response = await axios.post(`https:/gitalong.onrender.com/login-user`, payload);
+            console.log(response);
+        }
+        catch (error) {
+            console.log(error);
+        }
+    };
 
 
     return (
         <>
 
-            {login === 'login' ?<dialog id="my_modal" className="modal">
+            {login === 'login' ? <dialog id="my_modal" className="modal">
                 <div className="modal-box">
-                    <form >
+                    <form onSubmit={(e) => { loginSubmitHandler(e) }}>
                         <div className='top'>
                             <h1>Login</h1>
                             <button className="cross" onClick={() => { handleLoginClick() }}>
@@ -56,12 +71,13 @@ function Login() {
                             </button>
                         </div>
                         <div className='user-details'>
-                            <span className='label'>Username</span> <br />
+                            <span className='label'>Email</span> <br />
                             <input
                                 type="text"
-                                placeholder="Enter your GitHub username"
-                                value={data.username}
+                                placeholder="Enter your email"
+                                value={data.email}
                                 onChange={handleChange}
+                                name='email'
                             />
                         </div>
                         <div className='user-details'>
@@ -71,6 +87,7 @@ function Login() {
                                 placeholder="Enter your Password"
                                 value={data.password}
                                 onChange={handleChange}
+                                name='password'
                             />
 
                         </div>
